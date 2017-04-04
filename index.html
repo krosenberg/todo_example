@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app=myApp>
+<head>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+	<style type="text/css">
+		.done-true {
+			color: gray;
+			text-decoration: line-through;
+		}
+
+		input {
+			font-size: 14px;
+			border: 1px solid black;
+			outline-color: black;
+		}
+	</style>
+</head>
+<body>
+
+<div ng-controller="todoCtrl">
+	<h2>
+		Completed {{getRemainingTodos()}} of {{getTotalTodos()}} tasks
+		<button ng-click="onClickClear()">Clear completed</button>
+	</h2>
+	<ul>
+		<li ng-repeat="todo in todos">
+			<input ng-model="todo.done" type="checkbox" />
+			<span class="done-{{todo.done}}">{{todo.text}}</span>
+		</li>
+	</ul>
+	<form ng-submit="addTodo()">
+		<input type="text" ng-model="newTodo"/>
+		<button type="submit">Add Todo</button>
+	</form>
+
+
+</div>
+
+</body>
+</html>
